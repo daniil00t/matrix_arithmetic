@@ -1,0 +1,16 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%yellow(%d{HH:mm:ss.SSS}) %highlight([%thread] %-5level) %yellow(%logger{36}) - %green(%msg%n)</pattern>
+        </encoder>
+    </appender>
+    <root level="trace">
+        <appender-ref ref="STDOUT"/>
+    </root>
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+    <logger name="io.netty" level="INFO"/>
+    <logger name="org.apache.kafka.clients.producer" level="INFO"/>
+    <logger name="org.apache.kafka" level="ERROR"/>
+</configuration>

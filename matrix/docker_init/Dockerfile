@@ -1,0 +1,14 @@
+FROM gradle as builder
+WORKDIR /builder
+COPY src/main/kotlin /builder/src/main/kotlin
+COPY src/main/resources /builder/src/main/resources
+COPY build.gradle.kts settings.gradle.kts gradle.properties /builder/
+RUN gradle clean build --no-daemon
+
+
+FROM openjdk
+WORKDIR /app
+
+COPY --from=builder /builder/build/libs/matrix-1.0.jar /app/main.jar
+ENTRYPOINT ["java", "-jar", "main.jar"]
+

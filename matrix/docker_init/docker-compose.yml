@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  matrices_multiplication:
+    user: root
+    build:
+      context: ..
+      dockerfile: docker_init/Dockerfile
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: 192.168.1.106:29092
+      KAFKA_RQ_TOPIC: matrix.worker.rq_matrix
+      REDIS_HOST: 192.168.1.106
+      REDIS_PORT: 6379
+  matrix_by_num_multiplication:
+    user: root
+    build:
+      context: ..
+      dockerfile: docker_init/Dockerfile
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: 192.168.1.106:29092
+      KAFKA_RQ_TOPIC: matrix.worker.rq_number
+      REDIS_HOST: 192.168.1.106
+      REDIS_PORT: 6379

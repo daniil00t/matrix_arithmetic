@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  master:
+    image: redis:5.0.8
+    volumes:
+      - ./logs:/log
+      - ./conf:/conf
+    ports:
+      - "6379:6379"
